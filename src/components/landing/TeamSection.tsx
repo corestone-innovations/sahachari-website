@@ -9,16 +9,16 @@ type TeamMember = {
 const team: TeamMember[] = [
     {
         avatar: 'S',
-        name: '[Founder Name]',
-        role: 'Co-Founder · Product & Technology',
-        bio: 'Computer Science graduate from CUSAT, Batch 2024. Passionate about building technology that solves problems for communities that are often overlooked by mainstream tech.',
+        name: 'Vinayak s',
+        role: 'Founder · Product & Technology',
+        bio: 'Leads the overall vision, product strategy, and execution—driving architecture, engineering direction, and technology roadmap while ensuring the platform creates meaningful impact by connecting communities, enabling local services, and strengthening rural livelihoods through digital innovation.',
     },
     {
         avatar: 'S',
         avatarBg: 'var(--earth)',
-        name: '[Co-Founder Name]',
+        name: 'Anaj krishna',
         role: 'Co-Founder · Operations & Growth',
-        bio: 'Computer Science graduate from CUSAT, Batch 2024. Leads community outreach and partnership development across Chittoor Taluk — with ground-level insight that no algorithm can replicate.',
+        bio: 'Drives field operations, community onboarding, and business development across Kerala',
     },
 ]
 
