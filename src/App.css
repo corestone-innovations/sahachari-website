@@ -11,6 +11,10 @@
   --text-dark: #1a1a1a;
   --text-mid: #4a4a4a;
   --text-light: #7a7a7a;
+
+  --page-pad: clamp(1.1rem, 4vw, 4rem);
+  --section-pad-y: clamp(3.5rem, 7vw, 6rem);
+  --nav-pad-y: clamp(0.9rem, 2vw, 1.2rem);
 }
 
 *,
@@ -30,6 +34,14 @@ body {
   background: var(--cream);
   color: var(--text-dark);
   overflow-x: hidden;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+  height: auto;
 }
 
 .material-symbols-rounded {
@@ -59,7 +71,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.2rem 4rem;
+  padding: var(--nav-pad-y) var(--page-pad);
   background: rgba(250, 247, 242, 0.88);
   backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(64, 145, 108, 0.15);
@@ -116,7 +128,8 @@ nav {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
-  padding: 8rem 4rem 4rem;
+  padding: 8rem var(--page-pad) 4rem;
+  gap: clamp(2rem, 6vw, 5rem);
   position: relative;
   overflow: hidden;
 }
@@ -237,6 +250,7 @@ nav {
   display: flex;
   gap: 1rem;
   align-items: center;
+  flex-wrap: wrap;
   animation: fadeSlideUp 0.7s 0.3s ease both;
 }
 
@@ -299,7 +313,7 @@ nav {
 }
 
 .phone-mockup {
-  width: 220px;
+  width: min(240px, 70vw);
   background: var(--green-deep);
   border-radius: 32px;
   padding: 12px;
@@ -466,7 +480,7 @@ nav {
 
 /* ── SECTION BASE ─────────────────────────────────────────────── */
 section {
-  padding: 6rem 4rem;
+  padding: var(--section-pad-y) var(--page-pad);
 }
 
 .section-eyebrow {
@@ -511,7 +525,7 @@ section {
 .story-quote-block {
   background: var(--green-deep);
   color: white;
-  padding: 3rem;
+  padding: clamp(1.6rem, 4vw, 3rem);
   border-radius: 2px;
   position: relative;
 }
@@ -557,7 +571,7 @@ section {
 
 .story-stats {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 1.5rem;
   margin-top: 3rem;
 }
@@ -599,7 +613,7 @@ section {
 
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 0;
 }
 
@@ -711,7 +725,7 @@ section {
 
 .why-visual {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1rem;
 }
 
@@ -756,14 +770,14 @@ section {
 
 .team-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 2rem;
   margin-top: 3.5rem;
 }
 
 .team-card {
   background: white;
-  padding: 2.5rem;
+  padding: clamp(1.6rem, 3vw, 2.5rem);
   display: flex;
   gap: 1.5rem;
   align-items: flex-start;
@@ -818,6 +832,7 @@ section {
   color: white;
   display: inline-flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 1.2rem;
   font-size: 0.9rem;
 }
@@ -831,7 +846,7 @@ section {
 .vision-section {
   text-align: center;
   background: var(--cream);
-  padding: 7rem 4rem;
+  padding: clamp(4.5rem, 8vw, 7rem) var(--page-pad);
 }
 
 .vision-section .section-eyebrow {
@@ -854,6 +869,7 @@ section {
 .vision-roadmap {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 0;
   margin: 3rem auto;
   max-width: 800px;
@@ -918,7 +934,7 @@ section {
 /* ── CTA ─────────────────────────────────────────────────────── */
 .cta-section {
   background: var(--green-deep);
-  padding: 6rem 4rem;
+  padding: 6rem var(--page-pad);
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -1009,7 +1025,7 @@ section {
 footer {
   background: #111;
   color: rgba(255, 255, 255, 0.5);
-  padding: 3rem 4rem;
+  padding: 3rem var(--page-pad);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1082,10 +1098,15 @@ footer {
 @media (max-width: 900px) {
   nav {
     padding: 1rem 1.5rem;
+    flex-wrap: wrap;
+    row-gap: 0.75rem;
   }
 
   .nav-links {
-    display: none;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.25rem;
   }
 
   .hero {
@@ -1114,11 +1135,7 @@ footer {
   }
 
   .features-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .team-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   }
 
   section {
@@ -1138,5 +1155,70 @@ footer {
   .phone-tag,
   .phone-tag-2 {
     display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    padding: 6.5rem 1.1rem 3rem;
+  }
+
+  .hero-title {
+    line-height: 1.05;
+  }
+
+  .story-quote {
+    font-size: 1.15rem;
+  }
+
+  .why-item {
+    gap: 0.85rem;
+  }
+
+  .team-card {
+    flex-direction: column;
+  }
+
+  .vision-roadmap {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .vision-roadmap::before {
+    display: none;
+  }
+
+  .footer-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 420px) {
+  nav {
+    padding: 0.9rem 1rem;
+  }
+
+  .nav-links {
+    gap: 0.9rem;
+  }
+
+  .nav-links a {
+    font-size: 0.78rem;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.65rem;
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+  }
+}
+
+@media (max-height: 650px) and (max-width: 900px) {
+  .hero {
+    min-height: auto;
   }
 }
